@@ -96,7 +96,7 @@ function Home() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#000"
+        backgroundColor: "white"
       }}
     >
       <Button title="OPEN BOTTOM SHEET" onPress={() => refRBSheet.current.open()} />

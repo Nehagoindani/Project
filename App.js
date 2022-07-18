@@ -25,6 +25,7 @@ import Login from './android/Screens/Login';
 import Profile from './android/Screens/Profile';
 import List from './android/Screens/List';
 import Data from './android/Screens/Data'
+import DrawerContent from './android/Screens/DrawerContent';
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 const Stack = createStackNavigator()
@@ -73,21 +74,17 @@ const Drawer = createDrawerNavigator();
 
 function DrawerTab() {
   return (
-    <Drawer.Navigator screenOptions={{headerShown: false }} >
-      <Drawer.Screen name="BottomTab" component={BottomTab} />
-     
+    <Drawer.Navigator 
+          drawerContent={(props) => (
+            <DrawerContent {...props}  />
+          )}
+          >
+      <Drawer.Screen name="Home"options={{headerStyle:{backgroundColor:'#035956'}}}  component={BottomTab} />
     </Drawer.Navigator>
 
   );
 }
 
-const Root = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="BottomTab" options={{ headerShown: false }} component={BottomTab} />
-    </Stack.Navigator>
-  )
-}
 
 const App = () => {
 
@@ -96,25 +93,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        {
-          token == null ? (
-            <>
-              <Authstack />
-            </>
-          ) : (
-            <>
-              {/* <Drawer.Navigator initialRouteName="Home">
-                <Drawer.Screen name="Login" component={Login} />
-
-              </Drawer.Navigator> */}
-              <Drawer.Navigator initialRouteName="Home" screenOptions={{  drawerPosition: "right",}} >
-                <Drawer.Screen name="Home" component={DrawerTab} />
-                <Drawer.Screen name="Data" component={Data} />
-              
-              </Drawer.Navigator>
-            </>
-          )
-        }
+       <DrawerTab/>
       </NativeBaseProvider>
     </NavigationContainer>
   );
