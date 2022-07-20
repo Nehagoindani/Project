@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react'
 import { StyleSheet, View, TextInput } from 'react-native'
 import { Container, Text, Heading, Center, NativeBaseProvider, Box, Input, St, Stack, Button, Pressable } from "native-base";
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 function SignUp({ navigation }) {
 
@@ -14,16 +15,19 @@ function SignUp({ navigation }) {
     return (
 
         <Box style={styles.View1}>
-
-
+            
             <Center bg="white" marginTop={15} borderRadius={25} marginLeft={10}
-                marginRight={10} paddingTop={20} paddingBottom={15}  >
-                <View style={{ paddingBottom: 15 }}>
-                    <Heading size="md" color='teal.600' fontSize={25} >SignUp</Heading>
+                marginRight={10} paddingTop={20} paddingBottom={15}
+                 borderColor={'orange'}  >
+                    <View style={{justifyContent:'center',
+                    alignItems:'center', margin:15, paddingBottom:20}}>
+            <Icon name="user" color="orange" size={60} />
+            </View>
+
+
+                <View style={{ paddingBottom: 20 }}>
+                    <Heading style={{color:'orange', fontSize:30}} size="md" color='orange' fontSize={25} >SignUp</Heading>
                 </View>
-
-
-
 
                 <View style={styles.inp}>
                     <Input mx="2" placeholder="Username"
@@ -52,12 +56,12 @@ function SignUp({ navigation }) {
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Button
                         onPress={() => navigation.navigate('Home')}
-                        style={{ marginTop: 40, width: 200, backgroundColor: 'teal' }}  >SignUp</Button>
+                        style={{ marginTop: 40, width: 200, backgroundColor: 'orange'}}  >SignUp</Button>
 
                 </View>
                 <View style={{ margin: 20 , padding:10 }}>
                     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                        <Text> Already have account? Login</Text>
+                        <Text style={{color:'orange', fontSize:15, fontWeight:'bold'}}> Already have account? Login</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -73,9 +77,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor: "teal"
+        backgroundColor: "white"
     },
     textInput: {
+        borderBottomColor:'orange',
+        borderBottomWidth:2
       
     },
     inp: {

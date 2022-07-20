@@ -1,5 +1,5 @@
 import React, { Component, useContext, useState, useEffect } from 'react'
-import { StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, FlatList } from 'react-native';
 import { Container, Text, Heading, Center, View } from "native-base";
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import AppContext from './Provider/Context';
@@ -10,28 +10,28 @@ const Data = [
   {
     id:1 ,
     price: 700,
-    image: require('../Images/b1.png'),
+    image: require('../Images/p1.webp'),
     title: 'Ranch Burger..',
     descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
   },
   {
     id:2,
     price: 700,
-    image: require('../Images/b2.png'),
+    image: require('../Images/p2.webp'),
     title: 'Ranch Burgers',
     descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
   },
   {
     id:3,
     price: 700,
-    image: require('../Images/b3.png'),
+    image: require('../Images/p3.webp'),
     title: 'Ranch Burgers',
     descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
   },
   {
     id:4,
     price: 700,
-    image: require('../Images/b4.png'),
+    image: require('../Images/p5.webp'),
     title: 'Ranch Burgers',
     descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
   }
@@ -39,7 +39,7 @@ const Data = [
 ]
 
 
-function List(prop) {
+function List() {
   const context = useContext(AppContext);
   const [data, setData] = useState([])
 
@@ -49,18 +49,17 @@ function List(prop) {
 
 
 
-  const Cards =(v,i) => {
+  const Cards = (v,i) => {
     return (
-      <TouchableOpacity {...props} onPress={()=>prop.navigation.navigate('Descreption', {data:v})}>
+        <View>
+          
       <Card style={{
         backgroundColor: 'orange', margin: 10, marginLeft:40, width:300,
         borderRadius: 25, paddingLeft:25, paddingRight:20, 
       }} key={i} >
-       
-
-        <Card.Cover style={{ padding: 10, backgroundColor: 'orange', height: 150, width:150, }}
+  
+        <Card.Cover style={{ padding: 10, backgroundColor: 'orange', height: 150, width:220, }}
           source={v.image} />
-          <TouchableOpacity>
         <Card.Content>
           <Title style={{
             color: 'black', padding: 5, width: 190, textAlign: 'center',
@@ -68,24 +67,23 @@ function List(prop) {
           }}>{v.title} </Title>
           <Paragraph>{v.descreption}</Paragraph>
         </Card.Content>
-        </TouchableOpacity>
 
       </Card>
-      </TouchableOpacity>
+      </View>
     )
   }
 
   return (
+
     <ScrollView style={{backgroundColor:'black'}}>
-        <View style={{flex:1, flexDirection:'row', backgroundColor:'white', margin:20}}>
+          <View style={{flex:1, flexDirection:'row', backgroundColor:'white',  margin:20}}>
                 <View style={{flex:0.2}}>
                 <Icon name="fast-food" color="black" size={40} />
                 </View>
             <View style={{display:'flex', flex:0.8}}>
-                <Text style={{color:'brown', fontSize:30, fontWeight:'bold', padding:15}}>Burgers</Text>
+                <Text style={{color:'brown', fontSize:30, fontWeight:'bold', padding:15}}>Pizza</Text>
             </View>
             </View>
-     
      
 
       {

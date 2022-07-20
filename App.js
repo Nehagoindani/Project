@@ -16,6 +16,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 
 
@@ -26,76 +27,134 @@ import Profile from './android/Screens/Profile';
 import List from './android/Screens/List';
 import Data from './android/Screens/Data'
 import DrawerContent from './android/Screens/DrawerContent';
+import AppContext from './android/Screens/Provider/Context';
+import List2 from './android/Screens/List2';
+import List3 from './android/Screens/List3';
+import About from './android/Screens/About';
+import List4 from './android/Screens/List4';
+import Descreption from './android/Screens/Descreption';
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 
+const Top = createMaterialTopTabNavigator();
 const Stack = createStackNavigator()
-
-function Authstack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
-      <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
-
-
-    </Stack.Navigator>
-  )
-}
 const Tab = createBottomTabNavigator();
-function BottomTab() {
-  return (
-    <Tab.Navigator initialRouteName="Home"
-      screenOptions={{
-        headerShown: false ,
-        tabBarActiveTintColor: 'green',
-      }}
-    >
-      <Tab.Screen name="Home" component={Home} options={{
-        tabBarIcon: () => (
-          <Icon name='home' size={30} color='red' />
-
-        )
-      }} />
-      <Tab.Screen name="List" component={List} options={{
-        tabBarIcon: () => (
-          <IonIcon name='md-today' size={30} color='red' />
-
-        )
-      }} />
-      <Tab.Screen name="Profile" component={Profile} options={{
-        tabBarIcon: () => (
-          <Icon name='account-circle' size={30} color='red' />
-
-        )
-      }} />
-    </Tab.Navigator>
-  )
-}
 const Drawer = createDrawerNavigator();
 
-function DrawerTab() {
+const App = ({navigation}) => {
+
+  const [token, setToken] = useState(null)
+  const [imagesList, setImagesList] = useState(null)
+  const [profileImage, setProfileImage] = useState('https://cdn-icons-png.flaticon.com/512/149/149071.png')
+  const userSettings = {
+    token: token,
+    profileImage: profileImage,
+    imagesList: imagesList,
+    setProfileImage,
+    setToken,
+    setImagesList
+  }
+
+  function TopTabs({navigation}) {
+    const [swipeEnabled, setSwipeEnabled] = useState(true);
+    return (
+      <Top.Navigator
+      initialRouteName="List"
+      swipeEnabled={swipeEnabled}
+  
+      screenOptions={{
+  
+        tabBarActiveTintColor: '#d6994b',
+        tabBarScrollEnabled: true,
+        tabBarLabelStyle: { fontSize: 15, },
+        tabBarItemStyle: { width: 115 },
+        tabBarStyle: { backgroundColor: '#1a1a1a' },
+      }}
+      >
+        <Top.Screen name="Burger" component={List} />
+        <Top.Screen name="Pizza" component={List2} />
+        <Top.Screen name="Sandwitch" component={List3} />
+        <Top.Screen name="Deal" component={List4} />
+      </Top.Navigator>
+    );
+  }
+
+  function Authstack({navigation}) {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
+  
+  
+      </Stack.Navigator>
+    )
+  }
+
+  function BottomTab({navigation}) {
+    return (
+      <Tab.Navigator initialRouteName="Home"
+        screenOptions={{
+          headerShown: false ,
+          tabBarActiveTintColor: 'teal',
+        }}
+      >
+        <Tab.Screen name="Home" component={Home} options={{
+          tabBarIcon: () => (
+            <Icon name='home' size={30} color='brown' />
+  
+          )
+        }} />
+        <Tab.Screen name="About" component={About} options={{
+          tabBarIcon: () => (
+            <IonIcon name='md-today' size={30} color='brown' />
+  
+          )
+        }} />
+        <Tab.Screen name="Profile" component={Profile} options={{
+          tabBarIcon: () => (
+            <Icon name='account-circle' size={30} color='brown' />
+  
+          )
+        }} />
+      </Tab.Navigator>
+    )
+  }
+
+  function DrawerTab({navigation}) {
+    return (
+      <Drawer.Navigator screenOptions={{headerShown: false}}
+      
+            drawerContent={(props) => (
+              <DrawerContent {...props}  />
+            )}
+            >
+        <Drawer.Screen name="Home"  component={BottomTab} />
+        
+      </Drawer.Navigator>
+  
+    );
+  }
+  
+
   return (
-    <Drawer.Navigator 
-          drawerContent={(props) => (
-            <DrawerContent {...props}  />
-          )}
-          >
-      <Drawer.Screen name="Home"options={{headerStyle:{backgroundColor:'#035956'}}}  component={BottomTab} />
-    </Drawer.Navigator>
+    <AppContext.Provider value={userSettings}>
 
-  );
-}
-
-
-const App = () => {
-
-  const [token, setToken] = useState('null')
-
-  return (
     <NavigationContainer>
       <NativeBaseProvider>
-       <DrawerTab/>
+        {
+          token == null ? (
+            <><Authstack></Authstack></>
+          ): (
+            <Stack.Navigator>
+            <Stack.Screen name='Home' options={{ headerShown: false }} component={DrawerTab} />
+            <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
+            <Stack.Screen name='Descreption' options={{ headerShown: false }} component={Descreption} />
+          </Stack.Navigator>
+          )
+        }
+       
       </NativeBaseProvider>
     </NavigationContainer>
+    </AppContext.Provider>
   );
 };
 
