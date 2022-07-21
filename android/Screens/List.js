@@ -9,31 +9,31 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const Data = [
   {
     id:1 ,
-    price: 700,
+    price: 849.00,
     image: require('../Images/b1.png'),
-    title: 'Ranch Burger..',
-    descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
+    title: 'The Doppler',
+    descreption: 'Double crispy fried chicken topped with cheese mayo chilli garlic sauce and lettuce in soft-n-fresh'
   },
   {
     id:2,
-    price: 700,
-    image: require('../Images/b2.png'),
-    title: 'Ranch Burgers',
-    descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
+    price: 699,
+    image: require('../Images/b2.webp'),
+    title: 'Big Bang',
+    descreption: 'Smashed beef topped with pepperonis, crispy onion rings, jalapeños, lettuce, cheese, fiery hot and Lab'
   },
   {
     id:3,
-    price: 700,
+    price:  1499,
     image: require('../Images/b3.png'),
-    title: 'Ranch Burgers',
+    title: 'Loaded Fries',
     descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
   },
   {
     id:4,
-    price: 700,
-    image: require('../Images/b4.png'),
-    title: 'Ranch Burgers',
-    descreption: '3 Spicy Crispy Chicken Burgers and 3 Drinks'
+    price: 1499,
+    image: require('../Images/b4.webp'),
+    title: 'Quadra Reloaded',
+    descreption: '4 smashed beef patties with melted cheese topped with crispy onion rings, grilled mushrooms, smoke and BBQ sauces in soft-n-fresh Potato Buns.3 Spicy Crispy Chicken Burgers and 3 Drinks'
   }
 
 ]
@@ -51,33 +51,39 @@ function List(prop) {
 
   const Cards =(v,i) => {
     return (
-      <TouchableOpacity {...props} onPress={()=>prop.navigation.navigate('Descreption', {data:v})}>
-      <Card style={{
-        backgroundColor: 'orange', margin: 10, marginLeft:40, width:300,
-        borderRadius: 25, paddingLeft:25, paddingRight:20, 
+      <TouchableOpacity  onPress={()=>prop.navigation.navigate('Descreption', {data:v})}>
+      <View style={{ flexDirection:'row' ,  alignItems: 'center',
+       margin: 10,   paddingLeft:25, borderBottomColor:'#DFA13A', borderBottomWidth:2
+   
       }} key={i} >
-       
-
-        <Card.Cover style={{ padding: 10, backgroundColor: 'orange', height: 150, width:150, }}
+        <View>
+        <Card.Cover style={{ padding: 10,  height: 150, width:150, }}
           source={v.image} />
-          <TouchableOpacity>
+       
+        </View>
+        <View>
         <Card.Content>
           <Title style={{
-            color: 'black', padding: 5, width: 190, textAlign: 'center',
-            borderRadius: 20, backgroundColor: 'white'
-          }}>{v.title} </Title>
-          <Paragraph>{v.descreption}</Paragraph>
+            color: 'black', padding: 5, width: 190, textAlign: 'center'}}>{v.title} </Title>
+        
         </Card.Content>
-        </TouchableOpacity>
+        <Text style={{
+            color: 'white', padding: 8, marginLeft:40, width: 120,
+             textAlign: 'center', fontSize:17,
+             borderRadius:20, backgroundColor:'brown',
+             }}>price:  {v.price} </Text>
+        </View>
+      
+  
 
-      </Card>
+      </View>
       </TouchableOpacity>
     )
   }
 
   return (
-    <ScrollView style={{backgroundColor:'black'}}>
-        <View style={{flex:1, flexDirection:'row', backgroundColor:'white', margin:20}}>
+    <ScrollView >
+        <View style={{flex:1, flexDirection:'row', margin:10}}>
                 <View style={{flex:0.2}}>
                 <Icon name="fast-food" color="black" size={40} />
                 </View>
@@ -85,10 +91,8 @@ function List(prop) {
                 <Text style={{color:'brown', fontSize:30, fontWeight:'bold', padding:15}}>Burgers</Text>
             </View>
             </View>
-     
-     
-
-      {
+            <View style={{flexDirection:'row', flexWrap:'wrap'}}>
+            {
         data.map((v,i)=>{
           return(
             Cards(v,i)
@@ -96,6 +100,11 @@ function List(prop) {
         })
       }
 
+            </View>
+     
+     
+
+     
     </ScrollView>
 
   )

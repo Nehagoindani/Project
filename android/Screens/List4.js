@@ -1,5 +1,5 @@
 import React, { Component, useContext, useState, useEffect } from 'react'
-import { StyleSheet, Image, FlatList } from 'react-native';
+import { StyleSheet, Image, FlatList,TouchableOpacity } from 'react-native';
 import { Container, Text, Heading, Center, View } from "native-base";
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import AppContext from './Provider/Context';
@@ -39,7 +39,7 @@ const Data = [
 ]
 
 
-function List4() {
+function List4(prop) {
   const context = useContext(AppContext);
   const [data, setData] = useState([])
 
@@ -51,13 +51,14 @@ function List4() {
 
   const Cards = (v,i) => {
     return (
+      <TouchableOpacity  onPress={()=>prop.navigation.navigate('Descreption', {data:v})}>
       <Card style={{
-        backgroundColor: 'orange', margin: 10, marginLeft:40, width:300,
+        backgroundColor: '#DFA13A', margin: 10, marginLeft:40, width:300,
         borderRadius: 25, paddingLeft:25, paddingRight:20, 
       }} key={i} >
        
 
-        <Card.Cover style={{ padding: 10, backgroundColor: 'orange', height: 150, width:220, }}
+        <Card.Cover style={{ padding: 10, backgroundColor: '#DFA13A', height: 150, width:220, }}
           source={v.image} />
         <Card.Content>
           <Title style={{
@@ -68,12 +69,13 @@ function List4() {
         </Card.Content>
 
       </Card>
+      </TouchableOpacity>
     )
   }
 
   return (
 
-    <ScrollView style={{backgroundColor:'black'}}>
+    <ScrollView >
           <View style={{flex:1, flexDirection:'row', backgroundColor:'white', margin:20}}>
                 <View style={{flex:0.2}}>
                 <Icon name="fast-food" color="black" size={40} />

@@ -18,8 +18,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-
-
 import SignUp from './android/Screens/SignUp';
 import Home from './android/Screens/Home';
 import Login from './android/Screens/Login';
@@ -34,7 +32,8 @@ import About from './android/Screens/About';
 import List4 from './android/Screens/List4';
 import Descreption from './android/Screens/Descreption';
 import { color } from 'native-base/lib/typescript/theme/styled-system';
-
+import { Provider } from 'react-redux';
+import store from './android/Redux/Store';
 const Top = createMaterialTopTabNavigator();
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator();
@@ -63,11 +62,11 @@ const App = ({navigation}) => {
   
       screenOptions={{
   
-        tabBarActiveTintColor: '#d6994b',
+        tabBarActiveTintColor: 'black',
         tabBarScrollEnabled: true,
-        tabBarLabelStyle: { fontSize: 15, },
+        tabBarLabelStyle: { fontSize: 15,},
         tabBarItemStyle: { width: 115 },
-        tabBarStyle: { backgroundColor: '#1a1a1a' },
+         tabBarStyle: { backgroundColor: '#DFA13A' },
       }}
       >
         <Top.Screen name="Burger" component={List} />
@@ -92,26 +91,28 @@ const App = ({navigation}) => {
   function BottomTab({navigation}) {
     return (
       <Tab.Navigator initialRouteName="Home"
+      
+     
         screenOptions={{
           headerShown: false ,
-          tabBarActiveTintColor: 'teal',
+          tabBarStyle:{ backgroundColor: '#DFA13A', marginBottom:2 }
         }}
       >
         <Tab.Screen name="Home" component={Home} options={{
-          tabBarIcon: () => (
-            <Icon name='home' size={30} color='brown' />
+          tabBarIcon: ({focused}) => (
+            <Icon name='home' size={30} color={focused? 'black' : 'white'} />
   
           )
         }} />
         <Tab.Screen name="About" component={About} options={{
-          tabBarIcon: () => (
-            <IonIcon name='md-today' size={30} color='brown' />
+          tabBarIcon: ({focused}) => (
+            <IonIcon name='md-today' size={30} color={focused? '#DFA13A' : 'white'}  />
   
           )
         }} />
         <Tab.Screen name="Profile" component={Profile} options={{
-          tabBarIcon: () => (
-            <Icon name='account-circle' size={30} color='brown' />
+          tabBarIcon: ({focused}) => (
+            <Icon name='account-circle' size={30} color={focused? '#DFA13A' : 'white'}  />
   
           )
         }} />
@@ -136,6 +137,7 @@ const App = ({navigation}) => {
   
 
   return (
+    <Provider store={store}>
     <AppContext.Provider value={userSettings}>
 
     <NavigationContainer>
@@ -147,7 +149,11 @@ const App = ({navigation}) => {
             <Stack.Navigator>
             <Stack.Screen name='Home' options={{ headerShown: false }} component={DrawerTab} />
             <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
-            <Stack.Screen name='Descreption' options={{ headerShown: false }} component={Descreption} />
+            <Stack.Screen name='Descreption' options={{
+              title: false,
+              headerStyle: { backgroundColor: '#DFA13A'}
+              
+          }}  component={Descreption} />
           </Stack.Navigator>
           )
         }
@@ -155,6 +161,7 @@ const App = ({navigation}) => {
       </NativeBaseProvider>
     </NavigationContainer>
     </AppContext.Provider>
+    </Provider>
   );
 };
 

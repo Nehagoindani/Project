@@ -104,7 +104,7 @@ function Home({ navigation }) {
   return (
 
     <View style={{ flex: 1, backgroundColor: '#fcf7f0', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}>
-      <View style={{ flex: 0.1, flexDirection: 'row', height: 50}}>
+      <View style={{ flex: 0.1, flexDirection: 'row', height: 50 , backgroundColor:'#DFA13A'}}>
         <View style={{ flex: 0.1, margin: 10 }}>
           <Icon name="fast-food" color="black" size={40} />
         </View>
@@ -116,41 +116,41 @@ function Home({ navigation }) {
         </View>
 
       </View>
-      <View style={{ flex: 0.175, marginBottom:5 ,  }}>
-      <ScrollView horizontal={true} >
-       
-
-        <View style={{ flex: 0.3, flexDirection: 'row', justifyContent: 'space-around',margin:10}}>
-          <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Burger' })} style={{marginLeft:20,marginRight:20, marginBottom:10}} >
-            <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
-            <Text style={{color: 'black'}}>Burger</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Pizza' })} style={{marginLeft:20,marginRight:20}} >
-            <Icon name="pizza" color="brown" size={25} style={styles.icon} />
-            <Text>Pizza</Text>
-          </ TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Sandwitch' })} style={{marginLeft:20,marginRight:20}}>
-            <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
-            <Text>Sandwitch</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'List3' })} style={{marginLeft:20,marginRight:20}}>
-            <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
-            <Text>Deals</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'List3' })} style={{marginLeft:20,marginRight:20}}>
-            <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
-            <Text>Beverages</Text>
-          </TouchableOpacity>
+      <View style={{ flex: 0.175, marginBottom: 5, }}>
+        <ScrollView horizontal={true} >
 
 
+          <View style={{ flex: 0.3, flexDirection: 'row', justifyContent: 'space-around', margin: 10 }}>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Burger' })} style={{ marginLeft: 20, marginRight: 20, marginBottom: 10 }} >
+              <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
+              <Text style={{ color: 'black' }}>Burger</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Pizza' })} style={{ marginLeft: 20, marginRight: 20 }} >
+              <Icon name="pizza" color="brown" size={25} style={styles.icon} />
+              <Text>Pizza</Text>
+            </ TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Sandwitch' })} style={{ marginLeft: 20, marginRight: 20 }}>
+              <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
+              <Text>Sandwitch</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'List3' })} style={{ marginLeft: 20, marginRight: 20 }}>
+              <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
+              <Text>Deals</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'List3' })} style={{ marginLeft: 20, marginRight: 20 }}>
+              <Icon name="fast-food" color="brown" size={25} style={styles.icon} />
+              <Text>Beverages</Text>
+            </TouchableOpacity>
 
-        </View>
-      </ScrollView>
+
+
+          </View>
+        </ScrollView>
       </View>
-      <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row', borderWidth: 7, borderColor: 'orange' }}>
+      <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row', borderWidth: 7, borderColor: '#DFA13A' }}>
         <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
           <View>
-            <Image style={styles.specImg} source={require('../Images/b2.png')} />
+            <Image style={styles.specImg} source={require('../Images/b2.webp')} />
           </View>
           <View>
             <Image style={styles.specImg} source={require('../Images/p1.webp')} />
@@ -168,35 +168,43 @@ function Home({ navigation }) {
 
 
           <View style={{ flex: 0.1 }}>
-            <Text style={{  padding: 5, fontSize: 20, color: 'brown' , fontWeight:'bold'}}>Our Specials</Text>
+            <Text style={{ padding: 5, fontSize: 20, color: 'brown', fontWeight: 'bold' }}>Our Specials</Text>
 
           </View>
 
-          <View style={{ flex: 0.9,  }}>
-            <View style={{flexDirection:'row', justifyContent:'space-evenly'}}>
-            <View style={{width:160, height:120, display:'flex', justifyContent:'center',
-             alignItems:'center', margin:10, backgroundColor:'black'}}>
-            <Image style={{height:100, width:100}} source={require('../Images/b1.png')} />
-          </View>
-          <View style={{width:160, height:120, display:'flex',backgroundColor:'black',
-           justifyContent:'center', alignItems:'center',  margin:10}}>
-            <Image style={{height:100, width:100}} source={require('../Images/b2.png')} />
-          </View>
-
-            </View>
-            <View style={{flexDirection:'row', justifyContent:'space-evenly'}}>
-            <View style={{width:160, height:120, display:'flex', justifyContent:'center',
-             alignItems:'center',  margin:10,backgroundColor:'black'}}>
-            <Image style={{height:100, width:100}} source={require('../Images/b3.png')} />
-          </View>
-          <View style={{width:160, height:120, display:'flex', justifyContent:'center',backgroundColor:'black',
-           alignItems:'center',  margin:10}}>
-            <Image style={{height:100, width:100}} source={require('../Images/b4.png')} />
-          </View>
-
+          <View style={{ flex: 0.9, }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+              <View style={{
+                width: 160, height: 120, display: 'flex', justifyContent: 'center',
+                alignItems: 'center', margin: 10, backgroundColor: 'black'
+              }}>
+                <Image style={{ height: 100, width: 100 }} source={require('../Images/b1.png')} />
+              </View>
+              <View style={{
+                width: 160, height: 120, display: 'flex', backgroundColor: 'black',
+                justifyContent: 'center', alignItems: 'center', margin: 10
+              }}>
+                <Image style={{ height: 100, width: 100 }} source={require('../Images/b2.webp')} />
+              </View>
 
             </View>
-           
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+              <View style={{
+                width: 160, height: 120, display: 'flex', justifyContent: 'center',
+                alignItems: 'center', margin: 10, backgroundColor: 'black'
+              }}>
+                <Image style={{ height: 100, width: 100 }} source={require('../Images/b3.png')} />
+              </View>
+              <View style={{
+                width: 160, height: 120, display: 'flex', justifyContent: 'center', backgroundColor: 'black',
+                alignItems: 'center', margin: 10
+              }}>
+                <Image style={{ height: 100, width: 100 }} source={require('../Images/b4.webp')} />
+              </View>
+
+
+            </View>
+
 
           </View>
 
