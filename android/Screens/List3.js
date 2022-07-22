@@ -52,23 +52,31 @@ function List3(prop) {
   const Cards = (v,i) => {
     return (
       <TouchableOpacity  onPress={()=>prop.navigation.navigate('Descreption', {data:v})}>
-      <Card style={{
-        backgroundColor: '#DFA13A', margin: 10, marginLeft:40, width:300,
-        borderRadius: 25, paddingLeft:25, paddingRight:20, 
+      <View style={{ flexDirection:'row' ,  alignItems: 'center',
+       margin: 10,   paddingLeft:25, borderBottomColor:'#DFA13A', borderBottomWidth:2
+   
       }} key={i} >
-       
-
-        <Card.Cover style={{ padding: 10, backgroundColor: '#DFA13A', height: 150, width:220, }}
+        <View>
+        <Card.Cover style={{ padding: 10,  height: 150, width:150, }}
           source={v.image} />
+       
+        </View>
+        <View>
         <Card.Content>
           <Title style={{
-            color: 'black', padding: 5, width: 190, textAlign: 'center',
-            borderRadius: 20, backgroundColor: 'white'
-          }}>{v.title} </Title>
-          <Paragraph>{v.descreption}</Paragraph>
+            color: 'black', padding: 5, width: 190, textAlign: 'center'}}>{v.title} </Title>
+        
         </Card.Content>
+        <Text style={{
+            color: 'white', padding: 8, marginLeft:40, width: 120,
+             textAlign: 'center', fontSize:17,
+             borderRadius:20, backgroundColor:'brown',
+             }}>price:  {v.price} </Text>
+        </View>
+      
+  
 
-      </Card>
+      </View>
       </TouchableOpacity>
     )
   }

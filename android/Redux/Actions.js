@@ -4,9 +4,8 @@ import {
     DECREMENT
 } from './Types';
 
-export const increment = (item) => ({
-    type: INCREMENT,
-    payload:item
+export const increment = () => ({
+    type: INCREMENT
 });
 
 export const decrement = () => ({

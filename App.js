@@ -120,22 +120,20 @@ const App = ({navigation}) => {
     )
   }
 
-  function DrawerTab({navigation}) {
+  function StackTab({navigation}) {
     return (
-      <Drawer.Navigator screenOptions={{headerShown: false}}
+      <Stack.Navigator>
+            <Stack.Screen name='Home' options={{ headerShown: false }} component={BottomTab} />
+            <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
+            <Stack.Screen name='Descreption' options={{ headerShown:false
+    
+    // headerStyle: { backgroundColor: '#DFA13A'},   
+}}  component={Descreption} />
+          </Stack.Navigator>
       
-            drawerContent={(props) => (
-              <DrawerContent {...props}  />
-            )}
-            >
-        <Drawer.Screen name="Home"  component={BottomTab} />
-        
-      </Drawer.Navigator>
   
     );
   }
-  
-
   return (
     <Provider store={store}>
     <AppContext.Provider value={userSettings}>
@@ -146,15 +144,15 @@ const App = ({navigation}) => {
           token == null ? (
             <><Authstack></Authstack></>
           ): (
-            <Stack.Navigator>
-            <Stack.Screen name='Home' options={{ headerShown: false }} component={DrawerTab} />
-            <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
-            <Stack.Screen name='Descreption' options={{
-              title: false,
-              headerStyle: { backgroundColor: '#DFA13A'}
-              
-          }}  component={Descreption} />
-          </Stack.Navigator>
+            <Drawer.Navigator screenOptions={{headerShown: false, drawerPosition:"right"}}
+      
+            drawerContent={(props) => (
+              <DrawerContent {...props}  />
+            )}
+            >
+        <Drawer.Screen name="StackScreen"  component={StackTab} />
+        
+      </Drawer.Navigator>
           )
         }
        

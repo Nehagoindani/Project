@@ -4,11 +4,11 @@ const DECREMENT = "DECREMENT";
 const RESET = "RESET";
 
 // Action creators
-export const increment = (item, price) => ({
+export const increment = (title, price) => ({
     type: INCREMENT,
     payload:{
-        item:item,
-        price:price
+        item:title,
+        price: price, 
     },
 })
 
@@ -22,23 +22,28 @@ export const reset = () => ({
 
 // Initial state
 const initialState = {
-    counter: []
+    counter: null
+}
+const DataState = {
+   data:[]
 }
 
 // Root reducer
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action, dState = DataState) => {
     switch (action.type) {
         case INCREMENT:
             return {
                 ...state,
-                counter: action.payload
+                counter: state.counter + 1,
+                ...dState,
+                     data: action.payload
             }
         case DECREMENT:
             return {
-                ...state,
-                counter: state.counter - 1
-            }
-        case RESET:
+                    ...state,
+                    counter: state.counter - 1
+                }
+                case RESET:
             return {
                 ...state,
                 counter: 0

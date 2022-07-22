@@ -176,30 +176,30 @@ function Home({ navigation }) {
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
               <View style={{
                 width: 160, height: 120, display: 'flex', justifyContent: 'center',
-                alignItems: 'center', margin: 10, backgroundColor: 'black'
-              }}>
-                <Image style={{ height: 100, width: 100 }} source={require('../Images/b1.png')} />
-              </View>
-              <View style={{
-                width: 160, height: 120, display: 'flex', backgroundColor: 'black',
-                justifyContent: 'center', alignItems: 'center', margin: 10
+                alignItems: 'center', margin: 10, 
               }}>
                 <Image style={{ height: 100, width: 100 }} source={require('../Images/b2.webp')} />
+              </View>
+              <View style={{
+                width: 160, height: 120, display: 'flex',
+                justifyContent: 'center', alignItems: 'center', margin: 10
+              }}>
+                <Image style={{ height: 100, width: 130 }} source={require('../Images/p1.webp')} />
               </View>
 
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
               <View style={{
                 width: 160, height: 120, display: 'flex', justifyContent: 'center',
-                alignItems: 'center', margin: 10, backgroundColor: 'black'
-              }}>
-                <Image style={{ height: 100, width: 100 }} source={require('../Images/b3.png')} />
-              </View>
-              <View style={{
-                width: 160, height: 120, display: 'flex', justifyContent: 'center', backgroundColor: 'black',
                 alignItems: 'center', margin: 10
               }}>
-                <Image style={{ height: 100, width: 100 }} source={require('../Images/b4.webp')} />
+                <Image style={{ height: 100, width: 140 }} source={require('../Images/b4.webp')} />
+              </View>
+              <View style={{
+                width: 160, height: 100, display: 'flex', justifyContent: 'center',
+                alignItems: 'center', margin: 10
+              }}>
+                <Image style={{ height: 100, width: 140 }} source={require('../Images/s3.webp')} />
               </View>
 
 
